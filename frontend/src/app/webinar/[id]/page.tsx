@@ -37,7 +37,7 @@ function WebinarRoom({ roomId }: { roomId: string }) {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-zinc-50">
       {/* ── Main video area ───────────────────────────────── */}
-      <main className="flex-1 p-6 lg:p-8 flex flex-col gap-6">
+      <main className="flex-1 p-4 sm:p-6 lg:p-8 flex flex-col gap-6">
         {/* Room title bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 bg-white rounded-xl border border-zinc-200 shadow-sm">
           <div>
@@ -64,7 +64,7 @@ function WebinarRoom({ roomId }: { roomId: string }) {
         </div>
 
         {/* Video area — LiveKit embedded conference */}
-        <div className="flex-1 min-h-[520px]">
+        <div className="flex-1 min-h-[300px] sm:min-h-[400px] lg:min-h-[520px]">
           <LiveKitVideoRoom roomId={roomId} />
         </div>
 

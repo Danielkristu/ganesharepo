@@ -491,6 +491,13 @@ export default function RepositoryPage() {
   const [selCategory, setSelCategory] = useState("");
   const router = useRouter();
 
+  // Default sidebarOpen to false on mobile
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      setSidebarOpen(false);
+    }
+  }, []);
+
   // Auth check + auto-personalize from ganesha_user
   useEffect(() => {
     const token = localStorage.getItem("ganesha_token");
@@ -741,15 +748,76 @@ export default function RepositoryPage() {
       </header>
 
       {/* ── Body ─────────────────────────────────────────── */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
+
+        {/* Backdrop for mobile when sidebar is open */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 z-20 bg-zinc-900/20 backdrop-blur-xs md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
 
         {/* Sidebar */}
         <aside
-          className={`shrink-0 bg-white border-r border-zinc-200 overflow-y-auto transition-all duration-200 ease-in-out ${
-            sidebarOpen ? "w-52" : "w-0"
+          className={`shrink-0 bg-white overflow-y-auto transition-all duration-200 ease-in-out absolute md:relative z-30 h-[calc(100vh-3.5rem)] md:h-auto ${
+            sidebarOpen ? "w-52 border-r border-zinc-200" : "w-0 border-r-0 pointer-events-none"
           }`}
         >
           <div className="w-52 p-4 pt-5">
+            {/* Mobile-only filters */}
+            <div className="md:hidden mb-6 pb-6 border-b border-zinc-100 flex flex-col gap-3">
+              <p className="text-[10px] uppercase tracking-widest font-semibold text-zinc-400 px-1">
+                Context & Filters
+              </p>
+              
+              {/* Faculty context */}
+              {ctxFaculty ? (
+                <div className="flex flex-col gap-1.5 px-1">
+                  <span className="text-[11px] text-zinc-400 font-medium">Faculty & Major</span>
+                  <button
+                    onClick={() => { setShowSetupModal(true); setSidebarOpen(false); }}
+                    className="inline-flex items-center justify-between gap-1.5 px-3 py-2 rounded-lg text-left text-[12px] font-semibold bg-zinc-900 text-white hover:bg-zinc-700 transition-colors cursor-pointer w-full"
+                  >
+                    <span className="truncate">🎓 {ctxFaculty} {ctxMajor ? `· ${ctxMajor}` : ""}</span>
+                    <span className="text-zinc-400 text-[10px] shrink-0">✎</span>
+                  </button>
+                  <button
+                    onClick={clearContext}
+                    className="text-left text-[11px] text-zinc-400 hover:text-zinc-600 px-1 underline mt-0.5"
+                  >
+                    Reset major context
+                  </button>
+                </div>
+              ) : (
+                <div className="px-1">
+                  <button
+                    onClick={() => { setShowSetupModal(true); setSidebarOpen(false); }}
+                    className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-[12px] font-medium border border-dashed border-zinc-300 text-zinc-500 hover:border-zinc-500 hover:text-zinc-800 transition-all"
+                  >
+                    + Set your major
+                  </button>
+                </div>
+              )}
+
+              {/* Year filter */}
+              {years.length > 0 && (
+                <div className="flex flex-col gap-1.5 px-1 mt-2">
+                  <span className="text-[11px] text-zinc-400 font-medium">Year</span>
+                  <select
+                    value={selYear}
+                    onChange={(e) => setSelYear(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg text-[12px] font-medium border border-zinc-200 text-zinc-600 bg-white focus:outline-none"
+                  >
+                    <option value="">Any year</option>
+                    {years.map((y) => (
+                      <option key={y} value={String(y)}>{y}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+
             <p className="text-[10px] uppercase tracking-widest font-semibold text-zinc-400 mb-3 px-1">
               Courses
             </p>
@@ -764,10 +832,10 @@ export default function RepositoryPage() {
 
         {/* Main */}
         <main className="flex-1 overflow-y-auto min-w-0">
-          <div className="px-7 py-6">
+          <div className="px-4 py-5 md:px-7 md:py-6">
 
             {/* Breadcrumb row */}
-            <div className="flex items-center justify-between mb-7">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 mb-7">
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setSidebarOpen(o => !o)}

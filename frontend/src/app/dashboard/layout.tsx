@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { GraduationCap, LayoutDashboard, Users, BookOpen, Settings, LogOut, Video, Globe, ArrowUpRight, ClipboardList } from "lucide-react";
 import Link from "next/link";
 import DashboardAccessGate from "@/components/auth/DashboardAccessGate";
+import { MobileNav } from "@/components/dashboard/MobileNav";
 
 function readJwtRole(token: string): string | null {
   try {
@@ -81,23 +82,26 @@ export default async function DashboardLayout({
 
         {/* ── Main Content ─────────────────────────────────────────── */}
         <div className="flex-1 flex flex-col min-w-0">
-          <header className="h-16 bg-white border-b border-zinc-200 flex items-center justify-between px-8">
-            <h1 className="text-lg font-medium text-zinc-900">Dashboard</h1>
-            <div className="flex items-center gap-4">
+          <header className="h-16 bg-white border-b border-zinc-200 flex items-center justify-between px-4 md:px-8">
+            <div className="flex items-center gap-2">
+              <MobileNav />
+              <h1 className="text-base md:text-lg font-medium text-zinc-900">Dashboard</h1>
+            </div>
+            <div className="flex items-center gap-3 sm:gap-4">
               <Link
                 href="/"
-                className="group relative inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-white border border-zinc-200 rounded-full hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm active:scale-95"
+                className="group relative inline-flex items-center justify-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-zinc-700 bg-white border border-zinc-200 rounded-full hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm active:scale-95"
               >
-                <Globe size={16} className="text-zinc-400 group-hover:text-blue-500 transition-colors" />
+                <Globe size={14} className="text-zinc-400 group-hover:text-blue-500 transition-colors" />
                 <span>GaneRepo</span>
-                <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                <ArrowUpRight size={12} className="opacity-50 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
               </Link>
               <div className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center border border-zinc-200">
                 <span className="text-xs font-semibold text-zinc-600">AD</span>
               </div>
             </div>
           </header>
-          <main className="flex-1 p-8">
+          <main className="flex-1 p-4 md:p-8">
             {children}
           </main>
         </div>

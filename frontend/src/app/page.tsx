@@ -13,16 +13,16 @@ export default function HomePage() {
               Ganesha Repository
             </span>
           </div>
-          <div className="flex items-center gap-6">
-            <Link href="/repository" className="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
+          <div className="flex items-center gap-3 sm:gap-6">
+            <Link href="/repository" className="text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
               Repository
             </Link>
-            <Link href="/webinar" className="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
+            <Link href="/webinar" className="text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
               Webinars
             </Link>
             <Link
               href="/login"
-              className="px-4 py-2 rounded-md text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 transition-colors"
+              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 transition-colors"
             >
               Sign In
             </Link>
@@ -36,7 +36,7 @@ export default function HomePage() {
           ITB Academic Portal
         </div>
 
-        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 max-w-4xl leading-tight text-zinc-900">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight mb-6 max-w-4xl leading-tight text-zinc-900">
           Knowledge at your fingertips
         </h1>
 
