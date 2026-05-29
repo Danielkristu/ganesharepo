@@ -14,9 +14,7 @@ _supabase: Client = create_client(settings.supabase_url, settings.supabase_secre
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
-# In-memory OTP store for simplicity
-# Format: { "email": {"otp": "123456", "expires_at": datetime} }
-otp_store = {}
+# OTPs are now stored in the Supabase 'otps' table to support serverless environments.
 
 class SendOTPRequest(BaseModel):
     email: str
@@ -54,10 +52,14 @@ def send_otp(req: SendOTPRequest):
         raise HTTPException(status_code=400, detail="Only ITB student or faculty emails are allowed.")
     
     otp = "".join(random.choices(string.digits, k=6))
-    otp_store[email] = {
+    expires_at = datetime.utcnow() + timedelta(minutes=5)
+    
+    # Store OTP in Supabase (upsert creates or updates the record for this email)
+    _supabase.table("otps").upsert({
+        "email": email,
         "otp": otp,
-        "expires_at": datetime.utcnow() + timedelta(minutes=5)
-    }
+        "expires_at": expires_at.isoformat()
+    }).execute()
     
     # Send email via Resend
     resend_api_key = settings.resend_api_key
@@ -92,13 +94,22 @@ def send_otp(req: SendOTPRequest):
 @router.post("/verify-otp")
 def verify_otp(req: VerifyOTPRequest):
     email = req.email.lower().strip()
-    record = otp_store.get(email)
     
-    if not record:
+    # Fetch OTP record from Supabase
+    resp = _supabase.table("otps").select("*").eq("email", email).execute()
+    if not resp.data:
         raise HTTPException(status_code=400, detail="No OTP requested for this email.")
         
-    if datetime.utcnow() > record["expires_at"]:
-        del otp_store[email]
+    record = resp.data[0]
+    
+    # Safely parse ISO format datetime string
+    expires_at_str = record["expires_at"]
+    if expires_at_str.endswith("Z"):
+        expires_at_str = expires_at_str[:-1] + "+00:00"
+    expires_at = datetime.fromisoformat(expires_at_str).replace(tzinfo=None)
+        
+    if datetime.utcnow() > expires_at:
+        _supabase.table("otps").delete().eq("email", email).execute()
         raise HTTPException(status_code=400, detail="OTP has expired. Please request a new one.")
         
     if record["otp"] != req.otp:
@@ -139,8 +150,8 @@ def verify_otp(req: VerifyOTPRequest):
     
     token = jwt.encode(payload, settings.supabase_jwt_secret, algorithm="HS256")
     
-    # Clean up
-    del otp_store[email]
+    # Clean up OTP from Supabase after successful login
+    _supabase.table("otps").delete().eq("email", email).execute()
     
     return {
         "access_token": token,
