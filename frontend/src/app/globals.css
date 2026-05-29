@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* ── Clean White Minimalist Palette ─────────────────────────────── */
+  --color-brand-50:  #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #64748b;
+  --color-brand-600: #475569;
+  --color-brand-900: #0f172a;
+
+  /* ── Semantic tokens ────────────────────────────── */
+  --color-background: #ffffff;
+  --color-surface:    #fafafa;
+  --color-surface-2:  #f4f4f5;
+  --color-border:     #e4e4e7;
+  --color-foreground: #18181b;
+  --color-muted:      #71717a;
+  --color-success:    #10b981;
+  --color-warning:    #f59e0b;
+  --color-error:      #ef4444;
+}
+
+/* ── Base ─────────────────────────────────────────── */
+html {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-background); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+
+/* ── Animations ─────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.4s ease both; }
+
+/* ── Clean Card ──────────────────────────────────── */
+.clean-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+.clean-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-color: var(--color-brand-200);
+}

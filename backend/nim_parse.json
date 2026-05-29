@@ -1,0 +1,352 @@
+{
+    "fakultas": [
+        {
+            "kode_tpb": "160",
+            "singkatan": "FMIPA",
+            "nama": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+            "program_studi": [
+                {
+                    "kode": "101",
+                    "singkatan": "MA",
+                    "nama": "Matematika"
+                },
+                {
+                    "kode": "102",
+                    "singkatan": "FI",
+                    "nama": "Fisika"
+                },
+                {
+                    "kode": "103",
+                    "singkatan": "AS",
+                    "nama": "Astronomi"
+                },
+                {
+                    "kode": "105",
+                    "singkatan": "KI",
+                    "nama": "Kimia"
+                },
+                {
+                    "kode": "108",
+                    "singkatan": "AK",
+                    "nama": "Aktuaria"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "161",
+            "singkatan": "SITH-S",
+            "nama": "Sekolah Ilmu dan Teknologi Hayati - Program Sains",
+            "program_studi": [
+                {
+                    "kode": "104",
+                    "singkatan": "BM",
+                    "nama": "Mikrobiologi"
+                },
+                {
+                    "kode": "106",
+                    "singkatan": "BI",
+                    "nama": "Biologi"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "162",
+            "singkatan": "SF",
+            "nama": "Sekolah Farmasi",
+            "program_studi": [
+                {
+                    "kode": "107",
+                    "singkatan": "FA",
+                    "nama": "Sains dan Teknologi Farmasi"
+                },
+                {
+                    "kode": "116",
+                    "singkatan": "FK",
+                    "nama": "Farmasi Klinik dan Komunitas"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "163",
+            "singkatan": "FTTM",
+            "nama": "Fakultas Teknik Pertambangan dan Perminyakan",
+            "program_studi": [
+                {
+                    "kode": "121",
+                    "singkatan": "TA",
+                    "nama": "Teknik Pertambangan"
+                },
+                {
+                    "kode": "122",
+                    "singkatan": "TM",
+                    "nama": "Teknik Perminyakan"
+                },
+                {
+                    "kode": "123",
+                    "singkatan": "TG",
+                    "nama": "Teknik Geofisika"
+                },
+                {
+                    "kode": "125",
+                    "singkatan": "MG",
+                    "nama": "Teknik Metalurgi"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "164",
+            "singkatan": "FITB",
+            "nama": "Fakultas Ilmu dan Teknologi Kebumian",
+            "program_studi": [
+                {
+                    "kode": "120",
+                    "singkatan": "GL",
+                    "nama": "Teknik Geologi"
+                },
+                {
+                    "kode": "128",
+                    "singkatan": "ME",
+                    "nama": "Meteorologi"
+                },
+                {
+                    "kode": "129",
+                    "singkatan": "OS",
+                    "nama": "Oseanografi"
+                },
+                {
+                    "kode": "151",
+                    "singkatan": "GD",
+                    "nama": "Teknik Geodesi dan Geomatika"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "165",
+            "singkatan": "STEI-R",
+            "nama": "Sekolah Teknik Elektro dan Informatika - Rekayasa",
+            "program_studi": [
+                {
+                    "kode": "132",
+                    "singkatan": "EL",
+                    "nama": "Teknik Elektro"
+                },
+                {
+                    "kode": "180",
+                    "singkatan": "EP",
+                    "nama": "Teknik Tenaga Listrik"
+                },
+                {
+                    "kode": "181",
+                    "singkatan": "ET",
+                    "nama": "Teknik Telekomunikasi"
+                },
+                {
+                    "kode": "183",
+                    "singkatan": "EB",
+                    "nama": "Teknik Biomedis"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "166",
+            "singkatan": "FTSL",
+            "nama": "Fakultas Teknik Sipil dan Lingkungan",
+            "program_studi": [
+                {
+                    "kode": "150",
+                    "singkatan": "SI",
+                    "nama": "Teknik Sipil"
+                },
+                {
+                    "kode": "153",
+                    "singkatan": "TL",
+                    "nama": "Teknik Lingkungan"
+                },
+                {
+                    "kode": "155",
+                    "singkatan": "KL",
+                    "nama": "Teknik Kelautan"
+                },
+                {
+                    "kode": "157",
+                    "singkatan": "IL",
+                    "nama": "Rekayasa Infrastruktur Lingkungan"
+                },
+                {
+                    "kode": "158",
+                    "singkatan": "SA",
+                    "nama": "Teknik dan Pengelolaan Sumber Daya Air"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "167",
+            "singkatan": "FTI",
+            "nama": "Fakultas Teknologi Industri",
+            "program_studi": [
+                {
+                    "kode": "130",
+                    "singkatan": "TK",
+                    "nama": "Teknik Kimia"
+                },
+                {
+                    "kode": "133",
+                    "singkatan": "TF",
+                    "nama": "Teknik Fisika"
+                },
+                {
+                    "kode": "134",
+                    "singkatan": "TI",
+                    "nama": "Teknik Industri"
+                },
+                {
+                    "kode": "143",
+                    "singkatan": "PG",
+                    "nama": "Teknik Pangan"
+                },
+                {
+                    "kode": "144",
+                    "singkatan": "MR",
+                    "nama": "Manajemen Rekayasa"
+                },
+                {
+                    "kode": "145",
+                    "singkatan": "TB",
+                    "nama": "Teknik Bioenergi dan Kemurgi"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "168",
+            "singkatan": "FSRD",
+            "nama": "Fakultas Seni Rupa dan Desain",
+            "program_studi": [
+                {
+                    "kode": "170",
+                    "singkatan": "SR",
+                    "nama": "Seni Rupa"
+                },
+                {
+                    "kode": "172",
+                    "singkatan": "KR",
+                    "nama": "Kriya"
+                },
+                {
+                    "kode": "173",
+                    "singkatan": "DI",
+                    "nama": "Desain Interior"
+                },
+                {
+                    "kode": "174",
+                    "singkatan": "DK",
+                    "nama": "Desain Komunikasi Visual"
+                },
+                {
+                    "kode": "175",
+                    "singkatan": "DP",
+                    "nama": "Desain Produk"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "169",
+            "singkatan": "FTMD",
+            "nama": "Fakultas Teknik Mesin dan Dirgantara",
+            "program_studi": [
+                {
+                    "kode": "131",
+                    "singkatan": "MS",
+                    "nama": "Teknik Mesin"
+                },
+                {
+                    "kode": "136",
+                    "singkatan": "AE",
+                    "nama": "Teknik Dirgantara"
+                },
+                {
+                    "kode": "137",
+                    "singkatan": "MT",
+                    "nama": "Teknik Material"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "196",
+            "singkatan": "STEI-K",
+            "nama": "Sekolah Teknik Elektro dan Informatika - Komputasi",
+            "program_studi": [
+                {
+                    "kode": "135",
+                    "singkatan": "IF",
+                    "nama": "Teknik Informatika"
+                },
+                {
+                    "kode": "182",
+                    "singkatan": "II",
+                    "nama": "Sistem dan Teknologi Informasi"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "197",
+            "singkatan": "SBM",
+            "nama": "Sekolah Bisnis dan Manajemen",
+            "program_studi": [
+                {
+                    "kode": "190",
+                    "singkatan": "MB",
+                    "nama": "Manajemen"
+                },
+                {
+                    "kode": "192",
+                    "singkatan": "MK",
+                    "nama": "Kewirausahaan"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "198",
+            "singkatan": "SITH-R",
+            "nama": "Sekolah Ilmu dan Teknologi Hayati - Program Rekayasa",
+            "program_studi": [
+                {
+                    "kode": "112",
+                    "singkatan": "BE",
+                    "nama": "Rekayasa Hayati"
+                },
+                {
+                    "kode": "114",
+                    "singkatan": "BA",
+                    "nama": "Rekayasa Pertanian"
+                },
+                {
+                    "kode": "115",
+                    "singkatan": "BW",
+                    "nama": "Rekayasa Kehutanan"
+                },
+                {
+                    "kode": "119",
+                    "singkatan": "BP",
+                    "nama": "Teknologi Pasca Panen"
+                }
+            ]
+        },
+        {
+            "kode_tpb": "199",
+            "singkatan": "SAPPK",
+            "nama": "Sekolah Arsitektur, Perencanaan dan Pengembangan Kebijakan",
+            "program_studi": [
+                {
+                    "kode": "152",
+                    "singkatan": "AR",
+                    "nama": "Arsitektur"
+                },
+                {
+                    "kode": "154",
+                    "singkatan": "PL",
+                    "nama": "Perencanaan Wilayah dan Kota"
+                }
+            ]
+        }
+    ]
+}

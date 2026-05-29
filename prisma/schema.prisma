@@ -1,0 +1,49 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model documents {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title        String
+  abstract     String?
+  author       String
+  category     String
+  faculty      String?
+  major        String?
+  file_url     String
+  material_type String  @default("file")
+  thumbnail_url String?
+  year         Int?
+  publish_mode String   @default("public")
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model webinar_rooms {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title        String
+  description  String?
+  host_id      String   @db.Uuid
+  status       String   @default("scheduled")
+  room_url     String?
+  scheduled_at DateTime @db.Timestamptz(6)
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+
+  questions    webinar_questions[]
+}
+
+model webinar_questions {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  webinar_id String   @db.Uuid
+  user_id    String   @db.Uuid
+  question   String
+  upvotes    Int      @default(0)
+  answered   Boolean  @default(false)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+
+  webinar    webinar_rooms @relation(fields: [webinar_id], references: [id], onDelete: Cascade)
+}

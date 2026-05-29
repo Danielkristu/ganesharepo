@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-jose[cryptography]
+httpx<0.28.0
+python-multipart
+pydantic
+pydantic-settings
+supabase
+python-dotenv
+PyMuPDF
+aiofiles
+resend==2.30.0
+livekit-api
