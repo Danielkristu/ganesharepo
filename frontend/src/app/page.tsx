@@ -1,7 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { BookOpen, Video, Search, ArrowRight, GraduationCap } from "lucide-react";
+import { BookOpen, Video, Search, ArrowRight, GraduationCap, Menu, X } from "lucide-react";
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <main className="min-h-screen flex flex-col bg-white">
       {/* ── Nav ──────────────────────────────────────────────── */}
@@ -9,25 +14,65 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <GraduationCap className="text-zinc-800" size={24} />
-            <span className="text-lg font-medium tracking-tight text-zinc-900">
+            <span className="text-base sm:text-lg font-medium tracking-tight text-zinc-900">
               Ganesha Repository
             </span>
           </div>
-          <div className="flex items-center gap-3 sm:gap-6">
-            <Link href="/repository" className="text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
+
+          {/* Desktop Nav */}
+          <div className="hidden sm:flex items-center gap-6">
+            <Link href="/repository" className="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
               Repository
             </Link>
-            <Link href="/webinar" className="text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
+            <Link href="/webinar" className="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
               Webinars
             </Link>
             <Link
               href="/login"
-              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 transition-colors"
+              className="px-4 py-2 rounded-md text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 transition-colors"
             >
               Sign In
             </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="sm:hidden p-2 rounded-lg text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
+
+        {/* Mobile Dropdown Panel */}
+        {menuOpen && (
+          <div className="sm:hidden border-b border-zinc-200 bg-white animate-in slide-in-from-top duration-200">
+            <div className="px-6 py-4 flex flex-col gap-3.5">
+              <Link
+                href="/repository"
+                onClick={() => setMenuOpen(false)}
+                className="text-sm font-medium text-zinc-600 hover:text-zinc-900 py-1 transition-colors"
+              >
+                Repository
+              </Link>
+              <Link
+                href="/webinar"
+                onClick={() => setMenuOpen(false)}
+                className="text-sm font-medium text-zinc-600 hover:text-zinc-900 py-1 transition-colors"
+              >
+                Webinars
+              </Link>
+              <Link
+                href="/login"
+                onClick={() => setMenuOpen(false)}
+                className="w-full text-center px-4 py-2.5 rounded-lg text-sm font-semibold bg-zinc-900 text-white hover:bg-zinc-800 transition-colors"
+              >
+                Sign In
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* ── Hero ─────────────────────────────────────────────── */}
